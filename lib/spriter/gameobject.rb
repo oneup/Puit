@@ -1,6 +1,8 @@
 class Gameobject
   def initialize
     @sprite = "gameobjects/#{self.class.name.downcase}.png".png
+    @x = @y = 0
+    @z = 0
     # dir.glob classname
   end
   
@@ -8,6 +10,6 @@ class Gameobject
   end
   
   def draw
-    @sprite.draw(0,0,0)
+    @sprite.draw(@x,@y,@z)
   end
 end

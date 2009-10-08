@@ -19,11 +19,13 @@ class MyWindow < Gosu::Window
     super 640, 480, false
     $game = self
     self.caption = "Puit"
-    @objects = [Mouse.new]
+    @objects = [@cursor = Mouse.new]
   end
   
   def update
     @objects.each_send :update
+    
+    @cursor.move_to(mouse_x, mouse_y) if @cursor
   end
   
   def draw
