@@ -4,19 +4,34 @@
 
 require "rubygems" rescue nil
 require 'gosu'
+
 require "lib/helpers"
+require "lib/spriter/gameobject"
+require "gameobjects/mouse"
+
+
+def game
+  $game
+end
 
 class MyWindow < Gosu::Window
   def initialize
     super 640, 480, false
-    
+    $game = self
     self.caption = "Puit"
-    @objects = []
+    @objects = [Mouse.new]
   end
   
   def update
     @objects.each_send :update
   end
+  
+  def draw
+    @objects.each_send :draw
+  end
 end
 
-MyWindow.new.show
+MyWindow.new
+
+
+game.show
