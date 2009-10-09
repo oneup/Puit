@@ -5,9 +5,9 @@
 require "rubygems" rescue nil
 require 'gosu'
 
-require "lib/helpers"
-require "lib/spriter/gameobject"
-require "gameobjects/mouse"
+require "lib/require_all"
+require_all "lib/**/*.rb"
+require_all "gameobjects/**/*.rb"
 
 
 def game
