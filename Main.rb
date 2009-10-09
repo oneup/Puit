@@ -19,7 +19,7 @@ class MyWindow < Gosu::Window
     super 640, 480, false
     $game = self
     self.caption = "Puit"
-    @objects = [@cursor = Mouse.new]
+    @objects = [@cursor = Mouse.new, Puit.new]
   end
   
   def update
@@ -33,7 +33,6 @@ class MyWindow < Gosu::Window
   end
 end
 
+
 MyWindow.new
-
-
 game.show
