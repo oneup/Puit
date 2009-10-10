@@ -10,6 +10,11 @@ require_all "lib/**/*.rb"
 require_all "gameobjects/**/*.rb"
 
 
+
+def window
+  $game
+end
+
 def game
   $game
 end
@@ -19,13 +24,17 @@ class MyWindow < Gosu::Window
     super 640, 480, false
     $game = self
     self.caption = "Puit"
-    @objects = [@cursor = Mouse.new, Puit.new]
+    @objects = [Background.new, @cursor = Mouse.new, Puit.new]
+    
+    @sprite = Sprite.new "gameobjects/puit/walk_empty.png"
   end
   
   def update
     @objects.each_send :update
     
-    @cursor.move_to(mouse_x, mouse_y) if @cursor
+    if "gameobjects/puit/stand_empty.png".exists?
+      @cursor.move_to(mouse_x, mouse_y) if @cursor
+    end
   end
   
   def draw

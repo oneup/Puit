@@ -1,0 +1,2 @@
+class Background < Gameobject
+end
