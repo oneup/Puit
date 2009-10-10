@@ -33,7 +33,6 @@ class String
     $images ||= {}
     $images[file_name] ||= Gosu::Image.new(game, file_name)
   end
-
   def yml
     $yaml ||= {}
     $yaml[self] ||= YAML.load_file(self) rescue nil
@@ -68,7 +67,16 @@ class String
       require e
     end
   end
+  
+  def exists?
+    FileTest.exist? self
+  end
 
+  def read
+    File.open(self) do |f|
+      return f.read
+    end
+  end
   
   def method_missing(method, *args) # and resend that method to that object
     # INSTANT PWNZORING
