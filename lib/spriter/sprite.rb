@@ -18,4 +18,8 @@ class Sprite
       @frames = [Gosu::Image.new(window, path)]
     end
   end
+  
+  def draw x,y,z
+    @frames[0].draw x,y,z
+  end
 end

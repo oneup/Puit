@@ -3,4 +3,9 @@ class Puit < Gameobject
     @x = x
     @y = y
   end
+  
+  def initialize
+    super
+    @sprite = @sprites[:walk_empty]
+  end
 end

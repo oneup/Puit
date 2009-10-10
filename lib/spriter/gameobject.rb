@@ -13,8 +13,10 @@ class Gameobject
         # make sprite class - sprite can be unanimated or animated image.
         # the missing class from gosu (adding game layer)
         #[ ] the gosu bundle does not support yml - make own format
-        @sprites[File.basename(e, File.extname(e)).to_sym] = e.png
-        @sprite = e.png
+        sprite_symbol = File.basename(e, File.extname(e)).to_sym
+        sprite = Sprite.new e
+        @sprites[sprite_symbol] = sprite
+        @sprite = @sprites[sprite_symbol]
       end
       
       #puts @sprites
