@@ -42,4 +42,21 @@ class Gameobject
   def draw
     @sprite.draw(@age, @x,@y,@z)
   end
+  
+  def keys= keybindings
+    @keys = keybindings
+    game.key_receivers << self
+  end
+  
+  def button_down id
+    if @keys[id]
+      self.send @keys[id], true
+    end
+  end
+  
+  def button_up id
+    if @keys[id]
+      self.send @keys[id], false
+    end
+  end
 end

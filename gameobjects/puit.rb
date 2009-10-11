@@ -12,13 +12,17 @@ class Puit < Gameobject
   def update
     super
     @y += 2
+    
+    if moving_right?
+      @x += 2
+    end
   end
   
-  def move_right
-    @x += 2
+  def move_right pressed
+    @move_right = pressed
   end
-  
-  def keys= keybindings
-    # todo
+    
+  def moving_right?
+    @move_right
   end
 end
