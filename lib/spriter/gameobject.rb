@@ -1,5 +1,9 @@
 class Gameobject
   def initialize
+    # object containment
+    @parent = game
+    
+    # animations
     @sprites = {}
     # simple file
     simple_file = "gameobjects/#{self.class.name.downcase}.png"
@@ -18,10 +22,10 @@ class Gameobject
         @sprites[sprite_symbol] = sprite
         @sprite = @sprites[sprite_symbol]
       end
-      
       #puts @sprites
     end
-    
+
+    @age = 0    
     @x = @y = 0
     @z = 0
     # dir.glob classname
@@ -32,9 +36,10 @@ class Gameobject
   end
   
   def update
+    @age += 1
   end
   
   def draw
-    @sprite.draw(@x,@y,@z)
+    @sprite.draw(@age, @x,@y,@z)
   end
 end

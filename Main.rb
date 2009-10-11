@@ -19,26 +19,44 @@ def game
   $game
 end
 
+
 class MyWindow < Gosu::Window
   def initialize
     super 640, 480, false
     $game = self
     self.caption = "Puit"
-    @objects = [Background.new, @cursor = Mouse.new, Puit.new]
     
-    @sprite = Sprite.new "gameobjects/puit/walk_empty.png"
+    @player = Puit.new
+    @player.keys = {Gosu::Button::KbRight => :move_right}
+    
+    @objects = [Background.new, @cursor = Mouse.new, @player]
+    
+    @keys = { Gosu::Button::KbEscape => :close }
   end
   
   def update
     @objects.each_send :update
-    
-    if "gameobjects/puit/stand_empty.png".exists?
-      @cursor.move_to(mouse_x, mouse_y) if @cursor
-    end
+
+    @cursor.move_to(mouse_x, mouse_y) if @cursor
+
+    resolve_collisons
   end
   
   def draw
     @objects.each_send :draw
+  end
+  
+  def button_down(id)
+    
+    @keys.each do |button, method|
+      if id == button
+        self.send method
+      end
+    end
+  end
+
+  def resolve_collisons
+    #
   end
 end
 

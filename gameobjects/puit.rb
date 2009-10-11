@@ -8,4 +8,17 @@ class Puit < Gameobject
     super
     @sprite = @sprites[:walk_empty]
   end
+  
+  def update
+    super
+    @y += 2
+  end
+  
+  def move_right
+    @x += 2
+  end
+  
+  def keys= keybindings
+    # todo
+  end
 end

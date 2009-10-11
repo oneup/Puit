@@ -12,14 +12,30 @@ class Sprite
       @configuration = eval(configuration.read)
       @width = @configuration[:width]
       @height = @configuration[:height] || -1
+      @slowdown = @configuration[:slowdown] || 1
       
       @frames = Gosu::Image.load_tiles(window, base+'.png', @width, @height, false)
     else #png, non animated
       @frames = [Gosu::Image.new(window, path)]
+      
+      @width = @frames.first.width
+      @height = @frames.first.height
+      @slowdown = 1
+    end
+    @name = File.basename(path, File.extname(path))
+
+    # non-blurry image scaling
+    #@frames.each {|f| f.retrofy }
+  end
+  
+  def button_down(id)
+    if id == Gosu::Button::KbEscape
+      close
     end
   end
   
-  def draw x,y,z
-    @frames[0].draw x,y,z
+  def draw frame, x,y,z
+    #puts "#{@name} #{frame} #{@frames.length} = #{frame%@frames.length}"
+    @frames[(frame/@slowdown)%(@frames.length)].draw x,y,z
   end
 end
