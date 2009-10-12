@@ -30,6 +30,7 @@ class Gameobject
     @age = 0    
     @x = @y = 0
     @z = 0
+    @orientation = 1
     # dir.glob classname
     
     @bounds = Rect.new(@x, @y, @sprite.width, @sprite.height)
@@ -48,7 +49,7 @@ class Gameobject
   end
   
   def draw
-    @sprite.draw(@age, @x,@y,@z)
+    @sprite.draw(@age, @orientation, @x,@y,@z)
   end
   
   def keys= keybindings

@@ -15,8 +15,14 @@ class Puit < Gameobject
     
     if moving_right?
       @x += 2
+      self.sprite = :walk_empty
+      @orientation = 1
     elsif moving_left?
       @x -= 2
+      self.sprite = :walk_empty
+      @orientation = -1
+    else
+      self.sprite = :stand_empty
     end
   end
   

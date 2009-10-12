@@ -36,9 +36,9 @@ class Sprite
     end
   end
   
-  def draw frame, x,y,z
+  def draw frame, orientation, x,y,z
     #puts "#{@name} #{frame} #{@frames.length} = #{frame%@frames.length}"
-    @frames[(frame/@slowdown)%(@frames.length)].draw x,y,z
+    @frames[(frame/@slowdown)%(@frames.length)].draw x,y,z, orientation
   end
   
   def width
