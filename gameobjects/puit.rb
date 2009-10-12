@@ -15,6 +15,8 @@ class Puit < Gameobject
     
     if moving_right?
       @x += 2
+    elsif moving_left?
+      @x -= 2
     end
   end
   
@@ -25,4 +27,13 @@ class Puit < Gameobject
   def moving_right?
     @move_right
   end
+  
+  def move_left pressed
+    @move_left = pressed
+  end
+    
+  def moving_left?
+    @move_left
+  end
+  
 end
