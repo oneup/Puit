@@ -1,13 +1,11 @@
 # powered by Gosy Mac Bundle 0.7.15
 
-
 # Do not include gosu.bundle into this template.
 # This is just here so you can run your game from the terminal, or
 # your favorite text editor, using `ruby Main.rb`.
 
 require "rubygems" rescue nil
 require 'gosu'
-require "socket"
 
 require "lib/require_all"
 require_all "lib/**/*.rb"
@@ -36,7 +34,7 @@ class MyWindow < Gosu::Window
     @key_receivers = []
         
     @player = Puit.new
-    @player.keys = {Gosu::Button::KbRight => :move_right}
+    @player.keys = {Gosu::Button::KbRight => :move_right, Gosu::Button::KbLeft => :move_left}
     
     @objects = [Background.new, @cursor = Mouse.new, @player]
 
