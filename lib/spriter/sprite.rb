@@ -15,6 +15,8 @@ class Sprite
       @slowdown = @configuration[:slowdown] || 1
       
       @frames = Gosu::Image.load_tiles(window, base+'.png', @width, @height, false)
+      
+      @height = @frames.first.height if @height == -1
     else #png, non animated
       @frames = [Gosu::Image.new(window, path)]
       
@@ -37,5 +39,13 @@ class Sprite
   def draw frame, x,y,z
     #puts "#{@name} #{frame} #{@frames.length} = #{frame%@frames.length}"
     @frames[(frame/@slowdown)%(@frames.length)].draw x,y,z
+  end
+  
+  def width
+    @width
+  end
+  
+  def height
+    @height
   end
 end

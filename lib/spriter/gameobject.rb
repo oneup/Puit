@@ -1,4 +1,6 @@
 class Gameobject
+  attr_accessor :bounds, :x, :y, :width, :height
+  
   def initialize
     # object containment
     @parent = game
@@ -30,9 +32,15 @@ class Gameobject
     @z = 0
     # dir.glob classname
     
+    @bounds = Rect.new(@x, @y, @sprite.width, @sprite.height)
+
     if self.respond_to? :setup
       self.setup
     end
+  end
+  
+  def sprite= what
+    @sprite = @sprites[what]
   end
   
   def update
@@ -58,5 +66,9 @@ class Gameobject
     if @keys[id]
       self.send @keys[id], false
     end
+  end
+  
+  def collides_with object
+    self.bounds.collide_rect? object.bounds
   end
 end

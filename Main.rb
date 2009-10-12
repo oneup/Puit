@@ -1,9 +1,13 @@
+# powered by Gosy Mac Bundle 0.7.15
+
+
 # Do not include gosu.bundle into this template.
 # This is just here so you can run your game from the terminal, or
 # your favorite text editor, using `ruby Main.rb`.
 
 require "rubygems" rescue nil
 require 'gosu'
+require "socket"
 
 require "lib/require_all"
 require_all "lib/**/*.rb"
@@ -71,6 +75,16 @@ class MyWindow < Gosu::Window
   end
   
   def resolve_collisons
+    for i in (0...@objects.size)
+      o1 = @objects[i]
+      for k in (i+1)...@objects.size
+        o2 = @objects[k]
+        if o1.collides_with o2
+          o1.on_collision_with o2 if o1.respond_to? :on_collision_with
+          o2.on_collision_with o1 if o2.respond_to? :on_collision_with
+        end
+      end
+    end
     #
   end
 end
