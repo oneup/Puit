@@ -1,4 +1,6 @@
 class Puit < Gameobject  
+  GRAVITY = 0.3
+
   def move_to x, y
     @x = x
     @y = y
@@ -6,12 +8,15 @@ class Puit < Gameobject
   
   def initialize
     super
-    @sprite = @sprites[:walk_empty]
+    self.sprite = :stand_empty
+    @vely = 0
   end
   
   def update
     super
-    @y += 2
+    @y += @vely
+    
+    @vely += GRAVITY
     
     if moving_right?
       @x += 2
@@ -42,4 +47,15 @@ class Puit < Gameobject
     @move_left
   end
   
+  def jump pressed
+    return unless pressed
+    if may_jump?
+      @vely = -8
+    end
+  end
+  
+  def may_jump?
+    self.y >= 470 # on_ground
+    #maybe if bottom.attached_to != nil
+  end
 end

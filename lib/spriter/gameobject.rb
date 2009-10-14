@@ -46,6 +46,8 @@ class Gameobject
   
   def update
     @age += 1
+    self.bounds.x = @x
+    self.bounds.y = @y
   end
   
   def draw
@@ -71,5 +73,15 @@ class Gameobject
   
   def collides_with object
     self.bounds.collide_rect? object.bounds
+  end
+  
+  def bottom
+    #p self.bounds.bottom
+    self.bounds.bottom
+  end
+  
+  def bottom= value
+    self.bounds.bottom= value
+    self.y = self.bounds.y
   end
 end

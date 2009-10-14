@@ -34,14 +34,22 @@ class MyWindow < Gosu::Window
     @key_receivers = []
         
     @player = Puit.new
-    @player.keys = {Gosu::Button::KbRight => :move_right, Gosu::Button::KbLeft => :move_left}
+    @player.keys = {Gosu::Button::KbRight => :move_right, Gosu::Button::KbLeft => :move_left, Gosu::Button::KbX => :jump}
     
     @objects = [Background.new, @cursor = Mouse.new, @player]
 
     
-    @keys = { Gosu::Button::KbEscape => :close }
+    @keys = { Gosu::Button::KbEscape => :close,
+              Gosu::Button::KbC => :spawn
+          }
   end
   
+  def spawn
+    p = Puit.new
+    @objects << p
+    p.x, p.y =  mouse_x, mouse_y
+  end
+
   def update
     @objects.each_send :update
 
