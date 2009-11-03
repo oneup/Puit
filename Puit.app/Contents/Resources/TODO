@@ -1,0 +1,29 @@
+== todo
+
+[x] animated poit sprites
+[x] key bindings
+[x] collision detection
+[ ] make poit stand on solid ground
+[ ] synchronize with differnet poit clients in same network
+[ ] show debug font (3x3)
+
+[ ] proper geometry (self.x redirects to bounds.x)
+
+
+
+
+
+
+
+
+
+
+         [ ] proper tilemap bounds
+[ ] jump
+
+== or just !! migrate cutewars/kyoto step by step !!
+[ ] esads super sweet speedy on_collision_with_*
+
+
+== evaluate
+[ ] zoom (use ippas tinyworld bundle for texplay include)

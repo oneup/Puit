@@ -1,0 +1,19 @@
+highscore
+multiplayer highscore
+army following
+worms-esque speech bubbles
+global kill count
+global shot count
+music (dotmatrix / gbmc)
+
+
+
+
+
+
+when hit
+  emit particles
+  blink white
+
+when exploding
+  emit explosion parts

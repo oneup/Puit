@@ -1,0 +1,7 @@
+  every gameobject can contain subobjects
+  why?
+    a simulated world behaves like this. every object can contain more objects. it's CONTAINMENT SUBSYSTEM.
+
+
+  EVENT SUBSYSTEM
+   bubble? register globally?
